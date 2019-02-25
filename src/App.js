@@ -1,26 +1,64 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import style from './App.module.css';
+import Department from './components/Departments/Department';
+import CourseSubjects from './components/CourseSubjects/CourseSubjects';
 
 class App extends Component {
+
+  state = {
+    data: [],
+    degrees: []
+  }
+
+  componentDidMount() {
+    this.getData();
+  }
+
+  getData = () => {
+    fetch('http://localhost:4000/degrees')
+      .then((response) => {
+
+        return response.json();
+      })
+      .then(data => {
+        this.setState({ data: data });
+      })  //array of objects
+      .catch(error => console.log(error))
+  }
+
+  filterDapartments = () => {
+    let departmentName = [];
+    if (this.state.data.length !== 0) {
+      departmentName = [...new Set(this.state.data.map(x => x.departmentName))]
+    }
+
+    const department = this.state.data.length !== 0 ?
+      <Department department={departmentName} change={this.filterDegrees} degrees={this.state.degrees} />
+      : <h1>...Loading</h1>
+
+    return department;
+  }
+
+  filterDegrees = (event) => {
+    const degrees = this.state.data.filter(x => {
+      return x.departmentName.includes(event.target.value);
+    });
+
+    this.setState({ degrees: degrees });
+  }
+
+
   render() {
+    const department = this.filterDapartments();
+
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1 className={style.header}>React SQL</h1>
+        <div>{department}</div>
+        <CourseSubjects />
       </div>
+
     );
   }
 }
