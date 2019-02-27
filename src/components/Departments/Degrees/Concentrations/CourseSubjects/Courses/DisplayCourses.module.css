@@ -1,0 +1,8 @@
+
+.coursesContainer {
+    height: 25em;
+    width: 30em;
+    overflow: scroll;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Courses from './Courses/Courses';
 
-const courseSubjects = () => {
+const courseSubjects = (props) => {
     const [subjects, setSubject] = useState([]);
     const [subjectId, setSubjectId] = useState(0);
 
@@ -20,7 +20,7 @@ const courseSubjects = () => {
         showSubjects = null;
     }
     else {
-        
+
         showSubjects = (
             <select name='subject'
                 onChange={(event) => { setSubjectId(event.target.value) }}>
@@ -34,16 +34,16 @@ const courseSubjects = () => {
                 )}
             </select>
         );
-        
+
     }
 
 
 
     return (
         <div>
-            <button onClick={getData}>Show Subjects</button>
-            {showSubjects}
-            <Courses subjectId={subjectId}/>
+            {showSubjects} 
+            <button onClick={getData} disabled={props.disabled}>Show Subjects</button>
+            <Courses subjectId={subjectId} concentration={props.concentration} />
         </div>
     )
 }

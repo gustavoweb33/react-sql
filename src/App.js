@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import style from './App.module.css';
 import Department from './components/Departments/Department';
-import CourseSubjects from './components/CourseSubjects/CourseSubjects';
+// import CourseSubjects from './components/CourseSubjects/CourseSubjects';
 
 class App extends Component {
 
@@ -56,7 +56,7 @@ class App extends Component {
       <div className="App">
         <h1 className={style.header}>React SQL</h1>
         <div>{department}</div>
-        <CourseSubjects />
+       
       </div>
 
     );

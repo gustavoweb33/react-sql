@@ -11,7 +11,7 @@ const courses = (props) => {
             .catch(error => console.log(error));
     }
 
-    const showCourses = courses.length === 0 ? null : <DisplayCourses courses={courses} />
+    const showCourses = courses.length === 0 ? null : <DisplayCourses courses={courses} concentration={props.concentration}/>
 
     return (
         <div>

@@ -3,4 +3,6 @@ body {
   margin-bottom: 12px;
 }
 
-
+body button {
+  margin: 12px 0px 12px 0px;
+}
