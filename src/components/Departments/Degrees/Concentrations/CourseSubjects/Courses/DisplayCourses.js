@@ -6,7 +6,7 @@ import style from './DisplayCourses.module.css';
 
 //create a select tag with the graduation_requirement type: 1, 2 or 3 (core, major, other)
 class DisplayCourses extends Component {
-   
+
     state = {
         course: [],
         concentration: this.props.concentration
@@ -33,7 +33,7 @@ class DisplayCourses extends Component {
 
         this.state.course.forEach(course => {
             if (course.courseId.includes(event.target.value)) {
-                return console.log('already included')
+                return;
             }
             return;
         })
@@ -55,6 +55,8 @@ class DisplayCourses extends Component {
         })
 
         this.setState({ course: stateCourses });
+
+
     }
 
     saveCourses = () => {
@@ -71,8 +73,8 @@ class DisplayCourses extends Component {
 
 
     render() {
-        console.log(this.props)
 
+        console.log(this.state.course)
         return (
             <div className={style.coursesContainer}>
                 {

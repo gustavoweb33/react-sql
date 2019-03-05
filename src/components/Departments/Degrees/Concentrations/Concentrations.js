@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import style from '../../../../Global.module.css';
 import CourseSubjects from './CourseSubjects/CourseSubjects';
+import SavedCourses from './SavedCourses';
+
+//removed name='concentrationId' from select. might no be important
+
 
 class Concentration extends Component {
 
@@ -8,26 +12,36 @@ class Concentration extends Component {
         concentrationId: 0,
         data: [],
         disabled: true,
-        disabledOption: false
+        display: false
     }
 
-
+    componentDidMount() {
+        console.log('component did mount from concentration')
+    }
     getClasses = () => {
-        fetch(`http://localhost:4000/add?name=${this.state.concentrationId}`)
+        fetch(`http://localhost:4000/saved?name=${this.state.concentrationId}`)
             .then(response => response.json())
             .then(data => this.setState({ data: data }))
             .catch(error => console.log(error));
+
+        this.setState({ display: true });
     }
-//showSaveCoures could be made into its own component 
-//i.e. render the component if it data.length !== 0
+
+
+
     render() {
-        const showSaveCourses = this.state.data.length === 0 ?
-            <p>No courses for this concentration</p> : <p>{this.state.data[0].course_id}</p>
+        let showSaveCourses = null;
+
+        if (this.state.display) {
+            showSaveCourses = <SavedCourses savedCourses={this.state.data} />;
+        }
+        
+
 
         return (
             <div className={style.space}>
 
-                <select  name='concentrationId' onChange={(event) => 
+                <select onChange={(event) =>
                     this.setState({ concentrationId: event.target.value, disabled: false })}>
                     <option value={' '} >CONCENTRATION</option>
                     {
@@ -43,8 +57,10 @@ class Concentration extends Component {
                 </select>
 
                 <button onClick={this.getClasses}>Show saved courses </button>
-                {showSaveCourses} 
-                <CourseSubjects concentration={this.state.concentrationId} disabled={this.state.disabled}/>
+                <button onClick={() => this.setState({ display: false })}>Hide Courses</button>
+                {showSaveCourses}
+
+                <CourseSubjects concentration={this.state.concentrationId} disabled={this.state.disabled} />
             </div>
         )
     }

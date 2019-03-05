@@ -7,7 +7,10 @@ class degree extends Component {
     state = {
         concentrations: []
     }
-
+    componentDidMount() {
+        console.log('component did mount from degree')
+    }
+    
     getDegreeValue = (event) => {
         const concentration = [];
 
