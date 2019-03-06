@@ -3,8 +3,6 @@ import style from '../../../../Global.module.css';
 import CourseSubjects from './CourseSubjects/CourseSubjects';
 import SavedCourses from './SavedCourses';
 
-//removed name='concentrationId' from select. might no be important
-
 
 class Concentration extends Component {
 
@@ -15,9 +13,6 @@ class Concentration extends Component {
         display: false
     }
 
-    componentDidMount() {
-        console.log('component did mount from concentration')
-    }
     getClasses = () => {
         fetch(`http://localhost:4000/saved?name=${this.state.concentrationId}`)
             .then(response => response.json())
@@ -30,13 +25,15 @@ class Concentration extends Component {
 
 
     render() {
+
         let showSaveCourses = null;
 
         if (this.state.display) {
-            showSaveCourses = <SavedCourses savedCourses={this.state.data} />;
+            showSaveCourses = <SavedCourses
+                savedCourses={this.state.data}
+                concentrationId={this.state.concentrationId}
+                concentrations={this.props.concentrations} />;
         }
-        
-
 
         return (
             <div className={style.space}>

@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import style from './DisplayCourses.module.css';
 
-//create a fetch function to insert the selected courses that correspond with the passed down concentration
-
-
-//create a select tag with the graduation_requirement type: 1, 2 or 3 (core, major, other)
 class DisplayCourses extends Component {
 
     state = {
@@ -13,23 +9,7 @@ class DisplayCourses extends Component {
     }
 
     getCheckboxValue = (event) => {
-        //let courses = [...this.state.courses];
         const stateCourses = [...this.state.course];
-
-        // if (!(courses.includes(event.target.value)) && event.target.checked) {
-        //     courses.push(event.target.value);
-        // }
-        // else if (event.target.checked === false) {
-        //     //remove from courses array
-        //     const index = courses.indexOf(event.target.value);
-        //     courses.splice(index, 1);
-
-        // }
-        // else {
-        //     console.log('course already included');
-        //     return;
-        // }
-        // this.setState({ courses: courses });
 
         this.state.course.forEach(course => {
             if (course.courseId.includes(event.target.value)) {
@@ -73,8 +53,6 @@ class DisplayCourses extends Component {
 
 
     render() {
-
-        console.log(this.state.course)
         return (
             <div className={style.coursesContainer}>
                 {

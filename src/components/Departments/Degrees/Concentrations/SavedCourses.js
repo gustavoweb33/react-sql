@@ -2,17 +2,17 @@ import React from 'react';
 import style from './SavedCourses.module.css';
 import { Table } from 'semantic-ui-react'
 
-const savedCourses = ({ savedCourses }) => {
-    //turn component into a class based component. 
-    //use fetch to get concentration name/info when component did mount
+const savedCourses = ({ savedCourses, concentrationId, concentrations }) => {
+    const id = Number(concentrationId);
+    const title = concentrations.filter(concentration => concentration.concentrationId === id)
+        .map(concentration => concentration.concentrationDescription);
 
-    console.log(savedCourses)
     return (
         <div >
             <Table basic>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Notes</Table.HeaderCell>
+                        <Table.HeaderCell><h3>{title}</h3></Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>

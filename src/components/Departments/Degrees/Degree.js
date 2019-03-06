@@ -7,16 +7,12 @@ class degree extends Component {
     state = {
         concentrations: []
     }
-    componentDidMount() {
-        console.log('component did mount from degree')
-    }
-    
+ 
     getDegreeValue = (event) => {
         const concentration = [];
 
         for (let key in this.props.degrees) {
             if (this.props.degrees[key].degreeName === event.target.value) {
-
                 concentration.push(this.props.degrees[key]);
             }
         }
