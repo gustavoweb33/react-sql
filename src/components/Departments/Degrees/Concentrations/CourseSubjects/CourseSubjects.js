@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Courses from './Courses/Courses';
+import style from '../../Concentrations/Concentrations.module.css'
 
 const courseSubjects = (props) => {
     const [subjects, setSubject] = useState([]);
@@ -12,7 +13,6 @@ const courseSubjects = (props) => {
             .catch(error => console.log(error));
     }
 
-
     let showSubjects;
 
     if (subjects.length === 0) {
@@ -20,18 +20,18 @@ const courseSubjects = (props) => {
         showSubjects = null;
     }
     else {
-
         showSubjects = (
             <select name='subject'
                 onChange={(event) => { setSubjectId(event.target.value) }}>
-
-                {subjects.map(subject =>
-                    <option
-                        key={subject.subjectId}
-                        value={subject.subjectId}>
-                        {subject.description}
-                    </option>
-                )}
+                {
+                    subjects.map(subject =>
+                        <option
+                            key={subject.subjectId}
+                            value={subject.subjectId}>
+                            {subject.description}
+                        </option>
+                    )
+                }
             </select>
         );
 
@@ -40,10 +40,13 @@ const courseSubjects = (props) => {
 
 
     return (
-        <div>
-            {showSubjects} 
+        <div className={style.courseSubject}>
+            <p>Start adding courses here!</p>
             <button onClick={getData} disabled={props.disabled}>Show Subjects</button>
-            <Courses subjectId={subjectId} concentration={props.concentration} />
+            {showSubjects}
+            <div>
+                <Courses subjectId={subjectId} concentration={props.concentration} />
+            </div>
         </div>
     )
 }

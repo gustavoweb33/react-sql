@@ -53,10 +53,9 @@ class App extends Component {
 
 
     return (
-      <div className="App">
+      <div className={style.background}>
         <h1 className={style.header}>React SQL</h1>
         <div>{department}</div>
-       
       </div>
 
     );

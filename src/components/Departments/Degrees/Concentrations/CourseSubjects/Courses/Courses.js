@@ -1,24 +1,32 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import DisplayCourses from './DisplayCourses';
 
-const courses = (props) => {
-    const [courses, setCourses] = useState([]);
-
-    const getCourses = () => {
-        fetch(`http://localhost:4000/courses?id=${props.subjectId}`)
-            .then(results => results.json())
-            .then(courses => setCourses(courses))
-            .catch(error => console.log(error));
+class CoursesClass extends Component {
+    state = {
+        courses: []
     }
 
-    const showCourses = courses.length === 0 ? null : <DisplayCourses courses={courses} concentration={props.concentration}/>
+    componentDidUpdate(prevProps) {
+        if (this.props.subjectId !== prevProps.subjectId) {
+            fetch(`http://localhost:4000/courses?id=${this.props.subjectId}`)
+                .then(results => results.json())
+                .then(courses => this.setState({ courses: courses }))
+                .catch(error => console.log(error));
+        }
 
-    return (
-        <div>
-            <button onClick={getCourses}>Display Courses</button>
-            {showCourses}
-        </div>
-    )
+    }
+
+    render() {
+        const showCourses = this.state.courses.length === 0 ? null
+            : <DisplayCourses courses={this.state.courses} concentration={this.props.concentration} />
+
+        return (
+            <div>
+                {showCourses}
+            </div>
+        )
+    }
+
 }
 
-export default courses;
+export default CoursesClass;

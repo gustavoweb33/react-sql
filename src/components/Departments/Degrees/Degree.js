@@ -7,7 +7,7 @@ class degree extends Component {
     state = {
         concentrations: []
     }
- 
+
     getDegreeValue = (event) => {
         const concentration = [];
 
@@ -27,28 +27,29 @@ class degree extends Component {
             if (!(uniqueDegrees.includes(this.props.degrees[i].degreeName))) {
                 uniqueDegrees.push(this.props.degrees[i].degreeName);
             }
-
         }
 
         const concentration = this.state.concentrations.length !== 0 ?
-         <Concentrations concentrations={this.state.concentrations} /> : null;
+            <Concentrations concentrations={this.state.concentrations} /> : null;
 
         return (
 
             <div className={style.space}>
-                <select onChange={this.getDegreeValue}>
-                    <option value={''}>CHOOSE A DEGREE</option>
-                    {
-                        uniqueDegrees.map(degree =>
-                            <option
-                                key={degree}
-                                value={degree}>
-                                {degree}
-                            </option>
-                        )
-                    }
-                </select>
-                {concentration}
+                <div>
+                    <select onChange={this.getDegreeValue}>
+                        <option value={''}>CHOOSE A DEGREE</option>
+                        {
+                            uniqueDegrees.map(degree =>
+                                <option
+                                    key={degree}
+                                    value={degree}>
+                                    {degree}
+                                </option>
+                            )
+                        }
+                    </select>
+                    {concentration}
+                </div>
             </div>
         )
     }

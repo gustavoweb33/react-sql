@@ -23,7 +23,6 @@ class DisplayCourses extends Component {
                 return course.courseId === event.target.value;
             });
             stateCourses.splice(index, 1);
-            console.log(index);
         }
 
         this.props.courses.forEach(course => {
