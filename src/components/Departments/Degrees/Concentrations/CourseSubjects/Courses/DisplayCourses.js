@@ -70,7 +70,7 @@ class DisplayCourses extends Component {
                     })
 
                 }
-                <button onClick={this.saveCourses}>Save Courses</button>
+                <button onClick={this.saveCourses} className={style.buttonSize}>Save Courses</button>
             </div>
         )
     }

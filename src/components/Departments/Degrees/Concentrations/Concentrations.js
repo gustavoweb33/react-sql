@@ -4,6 +4,7 @@ import CourseSubjects from './CourseSubjects/CourseSubjects';
 import SavedCourses from './SavedCourses';
 import style from './Concentrations.module.css';
 import { Button } from 'semantic-ui-react'
+import Aux from '../../../../Auxs';
 
 
 class Concentration extends Component {
@@ -62,7 +63,7 @@ componentDidUpdate() {
         }
 
         return (
-            <div className={globalStyle.space}>
+            <Aux className={globalStyle.space}>
                 <select onChange={(event) =>
                     this.setState({ concentrationId: event.target.value, disabled: false })}>
                     <option value={0}>CONCENTRATION</option>
@@ -78,13 +79,13 @@ componentDidUpdate() {
                 </select>
 
                 {showButtons}
+
                 <div className={style.grid}>
                     {showSaveCourses}
                     {courseSubjects}
                 </div>
 
-            </div>
-
+            </Aux>
         )
     }
 

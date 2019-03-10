@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Concentrations from './Concentrations/Concentrations';
 import style from '../../../Global.module.css';
+import Aux from '../../../Auxs';
 
 class degree extends Component {
 
@@ -34,8 +35,7 @@ class degree extends Component {
 
         return (
 
-            <div className={style.space}>
-                <div>
+            <Aux className={style.space}>
                     <select onChange={this.getDegreeValue}>
                         <option value={''}>CHOOSE A DEGREE</option>
                         {
@@ -49,8 +49,7 @@ class degree extends Component {
                         }
                     </select>
                     {concentration}
-                </div>
-            </div>
+            </Aux>
         )
     }
 

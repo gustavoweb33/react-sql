@@ -11,3 +11,7 @@
     grid-column-start: 1;
 }
 
+.grid2 {
+display: grid;    
+
+}

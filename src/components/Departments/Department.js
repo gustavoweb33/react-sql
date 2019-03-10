@@ -8,7 +8,7 @@ const degree = ({ department, change, degrees }) => {
 
     return (
         <div className={style.space}>
-            <div>
+            <div className={style.grid}>
                 <select onChange={change}>
                     <option value={' '}>DEPARTMENT</option>
                     {
