@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Concentrations from './Concentrations/Concentrations';
 import style from '../../../Global.module.css';
-import Aux from '../../../Auxs';
+import Aux from '../../../Auxiliary';
 
 class degree extends Component {
 

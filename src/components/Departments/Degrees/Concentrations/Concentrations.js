@@ -4,7 +4,7 @@ import CourseSubjects from './CourseSubjects/CourseSubjects';
 import SavedCourses from './SavedCourses';
 import style from './Concentrations.module.css';
 import { Button } from 'semantic-ui-react'
-import Aux from '../../../../Auxs';
+import Aux from '../../../../Auxiliary';
 
 
 class Concentration extends Component {
