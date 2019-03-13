@@ -35,16 +35,17 @@ const savedCourses = ({ savedCourses, concentrationId, concentrations }) => {
                                 savedCourses.map((course, i) => {
                                     return (
                                         <Table.Cell key={i}>
-                                            <div>
+                                            <div className={style.innerContainer}>
                                                 <p>{course.courseId} ({course.creditHours})</p>
 
-                                                <button value={course.courseId} onClick={value}>x</button>
+                                                <button className={style.deleteButton} value={course.courseId} onClick={value}>x</button>
                                             </div>
                                         </Table.Cell>
                                     )
                                 })
                             }
                         </Table.Row>
+                        <Table.Row><button>Delete All</button></Table.Row>
                     </Table.Body>
                 </Table>
             </div>

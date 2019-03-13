@@ -3,5 +3,20 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     align-items: center;
-    padding: 0%;
+    padding: 0%; 
+}
+
+.innerContainer {
+    display: flex;
+    justify-content: space-evenly;
+    width: 11em;
+   
+}
+
+.deleteButton {
+    height: 20px;
+    border-radius: 25px;
+    border: 0.5px solid lightcoral;
+    background-color: lightcoral;
+    color: white;
 }
