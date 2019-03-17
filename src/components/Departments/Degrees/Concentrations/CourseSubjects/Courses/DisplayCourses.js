@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import style from './DisplayCourses.module.css';
+import Aux from '../../../../../../Auxiliary';
 
 class DisplayCourses extends Component {
 
@@ -53,25 +54,27 @@ class DisplayCourses extends Component {
 
     render() {
         return (
-            <div className={style.coursesContainer}>
-                {
-                    this.props.courses.map(course => {
-                        return (
-                            <div key={course.courseId}  >
-                                <div >
-                                    <input type='checkbox'
-                                        value={course.courseId}
-                                        onClick={this.getCheckboxValue} />
+            <Aux>
+                <div className={style.coursesContainer}>
+                    {
+                        this.props.courses.map(course => {
+                            return (
+                                <div key={course.courseId}  >
+                                    <div >
+                                        <input type='checkbox'
+                                            value={course.courseId}
+                                            onClick={this.getCheckboxValue} />
 
-                                    <label htmlFor={course.courseId}>{course.courseId} ({course.creditHours})</label>
+                                        <label htmlFor={course.courseId}>{course.courseId} ({course.creditHours})</label>
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    })
+                            )
+                        })
+                    }
 
-                }
-                <button onClick={this.saveCourses} className={style.buttonSize}>Save Courses</button>
-            </div>
+                </div>
+                <button onClick={this.saveCourses} className={style.buttonSize}>Save Courses</button >
+            </Aux>
         )
     }
 

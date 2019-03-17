@@ -25,10 +25,6 @@ class Concentration extends Component {
         this.setState({ display: true });
     }
 
-componentDidUpdate() {
-    console.log('updated from concentration')
-}
-
     render() {
         let showSaveCourses = null;
         let courseSubjects = null;

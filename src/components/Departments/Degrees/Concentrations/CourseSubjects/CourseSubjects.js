@@ -37,11 +37,9 @@ const courseSubjects = (props) => {
 
     }
 
-
-
     return (
         <div className={style.courseSubject}>
-            <p>Start adding courses here!</p>
+            <h3>Start adding courses here!</h3>
             <button onClick={getData} disabled={props.disabled}>Show Subjects</button>
             {showSubjects}
             <div>

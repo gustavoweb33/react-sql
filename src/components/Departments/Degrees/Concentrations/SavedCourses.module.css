@@ -20,3 +20,11 @@
     background-color: lightcoral;
     color: white;
 }
+
+.deleteButton:hover {
+    cursor: pointer;
+}
+
+.deleteAllButton {
+    width: 100%;
+}
