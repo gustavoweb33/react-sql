@@ -3,6 +3,7 @@ import Degrees from './Degrees/Degree';
 import style from '../../Global.module.css';
 
 
+
 const degree = ({ department, change, degrees }) => {
     const degree = degrees.length === 0 ? null : <Degrees degrees={degrees} />
 

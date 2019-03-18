@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Courses from './Courses/Courses';
 import style from '../../Concentrations/Concentrations.module.css'
+import {Button} from 'semantic-ui-react';
 
 const courseSubjects = (props) => {
     const [subjects, setSubject] = useState([]);
@@ -40,7 +41,7 @@ const courseSubjects = (props) => {
     return (
         <div className={style.courseSubject}>
             <h3>Start adding courses here!</h3>
-            <button onClick={getData} disabled={props.disabled}>Show Subjects</button>
+            <Button color='blue' size='small' onClick={getData} disabled={props.disabled}>Show Subjects</Button>
             {showSubjects}
             <div>
                 <Courses subjectId={subjectId} concentration={props.concentration} />

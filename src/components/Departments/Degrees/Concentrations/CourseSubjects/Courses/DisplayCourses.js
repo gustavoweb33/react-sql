@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import style from './DisplayCourses.module.css';
 import Aux from '../../../../../../Auxiliary';
+import {Button} from 'semantic-ui-react'
 
 class DisplayCourses extends Component {
 
@@ -73,7 +74,7 @@ class DisplayCourses extends Component {
                     }
 
                 </div>
-                <button onClick={this.saveCourses} className={style.buttonSize}>Save Courses</button >
+                <Button color='green' onClick={this.saveCourses}>Save Courses</Button >
             </Aux>
         )
     }

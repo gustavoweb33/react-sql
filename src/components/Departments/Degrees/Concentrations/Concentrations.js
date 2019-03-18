@@ -12,7 +12,6 @@ class Concentration extends Component {
     state = {
         concentrationId: 0,
         data: [],
-        disabled: true,
         display: false
     }
 
@@ -37,10 +36,9 @@ class Concentration extends Component {
                 concentrations={this.props.concentrations} />;
         }
         if (this.state.concentrationId !== 0) {
-            courseSubjects = <CourseSubjects concentration={this.state.concentrationId} disabled={this.state.disabled} />
+            courseSubjects = <CourseSubjects concentration={this.state.concentrationId} />
         }
 
-        if (!this.state.disabled) {
             showButtons =
                 <div>
                     <Button
@@ -56,7 +54,7 @@ class Concentration extends Component {
                         Hide Courses
                 </Button>
                 </div>
-        }
+        
 
         return (
             <Aux className={globalStyle.space}>
