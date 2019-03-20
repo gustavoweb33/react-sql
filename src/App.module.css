@@ -3,8 +3,7 @@ body {
 }
 
 select {
-  width: 35%;
-  
+  width: 30%; 
 }
 
 option {

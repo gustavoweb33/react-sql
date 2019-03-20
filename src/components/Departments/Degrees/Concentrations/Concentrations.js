@@ -39,22 +39,22 @@ class Concentration extends Component {
             courseSubjects = <CourseSubjects concentration={this.state.concentrationId} />
         }
 
-            showButtons =
-                <div>
-                    <Button
-                        color='blue'
-                        attached='left'
-                        onClick={this.getClasses}>
-                        Show saved courses
+        showButtons =
+            <div>
+                <Button
+                    color='blue'
+                    attached='left'
+                    onClick={this.getClasses}>
+                    Show saved courses
                 </Button>
-                    <Button
-                        color='teal'
-                        attached='right'
-                        onClick={() => this.setState({ display: false })}>
-                        Hide Courses
+                <Button
+                    color='teal'
+                    attached='right'
+                    onClick={() => this.setState({ display: false })}>
+                    Hide Courses
                 </Button>
-                </div>
-        
+            </div>
+
 
         return (
             <Aux className={globalStyle.space}>
@@ -74,9 +74,13 @@ class Concentration extends Component {
 
                 {showButtons}
 
-                <div className={style.grid}>
+                {  /* <div className={style.grid}>
                     {showSaveCourses}
                     {courseSubjects}
+                </div>*/}
+                <div className={style.grid}>
+                     {showSaveCourses}
+                     {courseSubjects}
                 </div>
 
             </Aux>

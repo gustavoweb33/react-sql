@@ -1,6 +1,6 @@
 
 .coursesContainer {
-    height: 30em;
+    height: 40em;
     overflow: scroll;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

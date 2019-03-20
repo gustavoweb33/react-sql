@@ -1,9 +1,16 @@
 
 .grid {
     display: grid;
-    gap: 19px;
+    gap: 19px; 
+    margin-left: 20px;
 }
 
 .space {
     padding: 20px 0 20px 0;
+}
+
+select {
+    border: 2px solid #00827c;
+    border-radius: 25px;
+    height: 27px;
 }
