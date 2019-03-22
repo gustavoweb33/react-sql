@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Courses from './Courses/Courses';
 import style from '../../Concentrations/Concentrations.module.css'
-import {Button} from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 const courseSubjects = (props) => {
     const [subjects, setSubject] = useState([]);
@@ -24,6 +24,7 @@ const courseSubjects = (props) => {
         showSubjects = (
             <select name='subject'
                 onChange={(event) => { setSubjectId(event.target.value) }}>
+                <option value=' '>Subject</option>
                 {
                     subjects.map(subject =>
                         <option

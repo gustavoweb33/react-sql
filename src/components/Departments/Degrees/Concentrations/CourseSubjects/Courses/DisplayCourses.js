@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import style from './DisplayCourses.module.css';
 import Aux from '../../../../../../Auxiliary';
-import {Button} from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
+import DuplicatWaring from './DuplicatesWarning';
 
 class DisplayCourses extends Component {
 
     state = {
+        disabled: true,
         course: [],
-        concentration: this.props.concentration
+        concentration: this.props.concentration,
+        anyDuplicateCourses: []
     }
 
     getCheckboxValue = (event) => {
@@ -33,27 +36,26 @@ class DisplayCourses extends Component {
                 return;
             }
 
-        })
+        });
+
+        if(this.state.course.length > 0) {
+            this.setState({disabled: false})
+        }
 
         this.setState({ course: stateCourses });
-
 
     }
 
     saveCourses = () => {
-        if (this.state.course.length === 0) {
-            console.log('empty course list');
-            return;
-        }
-
-        else {
-            let state = JSON.stringify(this.state)
-            fetch(`http://localhost:4000/insert?course=${state}`);
-        }
+        let state = JSON.stringify(this.state)
+        fetch(`http://localhost:4000/insert?course=${state}`)
+            .then(response => response.json())  //if there are duplicates, return a warning about duplicate courses
+            .then(data => this.setState({ anyDuplicateCourses: data.duplicateCourses }))
+            .catch(error => console.log(error));
     }
 
-
     render() {
+        console.log(this.state.course)
         return (
             <Aux>
                 <div className={style.coursesContainer}>
@@ -74,11 +76,11 @@ class DisplayCourses extends Component {
                     }
 
                 </div>
-                <Button color='green' onClick={this.saveCourses}>Save Courses</Button >
+                <Button color='green' onClick={this.saveCourses} disabled={this.state.disabled}>Save Courses</Button >
+                {this.state.anyDuplicateCourses.length > 0 ? <DuplicatWaring duplicates={this.state.anyDuplicateCourses}/> : null}
             </Aux>
         )
     }
-
 }
 
 export default DisplayCourses;

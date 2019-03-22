@@ -5,6 +5,7 @@ import { Table, Button } from 'semantic-ui-react'
 let courseToDelete = { CONCENTRATION_ID: 0 }
 const disabled = { disabled: true };
 
+
 const deleteCourse = (event) => {
     courseToDelete.courseId = event.target.value;
     let deletion = JSON.stringify(courseToDelete)
@@ -40,8 +41,9 @@ const savedCourses = ({ savedCourses, concentrationId, concentrations }) => {
     else {
         return noSavedCourses;
     }
-
+    
     return (
+       
         <div >
             <div>
                 <Table basic>
@@ -72,6 +74,7 @@ const savedCourses = ({ savedCourses, concentrationId, concentrations }) => {
                     <Button fluid size='tiny' inverted color='red' disabled={disabled.disabled} onClick={deleteAllCourses}>Delete All</Button>
                 </span>
             </div>
+           
         </div>
     )
 }
