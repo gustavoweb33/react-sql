@@ -7,7 +7,6 @@ import DuplicatWaring from './DuplicatesWarning';
 class DisplayCourses extends Component {
 
     state = {
-        disabled: true,
         course: [],
         concentration: this.props.concentration,
         anyDuplicateCourses: []
@@ -28,6 +27,7 @@ class DisplayCourses extends Component {
                 return course.courseId === event.target.value;
             });
             stateCourses.splice(index, 1);
+
         }
 
         this.props.courses.forEach(course => {
@@ -38,12 +38,7 @@ class DisplayCourses extends Component {
 
         });
 
-        if(this.state.course.length > 0) {
-            this.setState({disabled: false})
-        }
-
         this.setState({ course: stateCourses });
-
     }
 
     saveCourses = () => {
@@ -54,8 +49,15 @@ class DisplayCourses extends Component {
             .catch(error => console.log(error));
     }
 
+    disabledButtonHadler = (length) => {
+        if (length > 0) {
+            return false;
+        }
+        return true;
+    }
+
     render() {
-        console.log(this.state.course)
+        let disabled = this.disabledButtonHadler(this.state.course.length)
         return (
             <Aux>
                 <div className={style.coursesContainer}>
@@ -76,8 +78,8 @@ class DisplayCourses extends Component {
                     }
 
                 </div>
-                <Button color='green' onClick={this.saveCourses} disabled={this.state.disabled}>Save Courses</Button >
-                {this.state.anyDuplicateCourses.length > 0 ? <DuplicatWaring duplicates={this.state.anyDuplicateCourses}/> : null}
+                <Button color='green' fluid onClick={this.saveCourses} disabled={disabled}>Save Courses</Button >
+                {this.state.anyDuplicateCourses.length > 0 ? <DuplicatWaring duplicates={this.state.anyDuplicateCourses} /> : null}
             </Aux>
         )
     }

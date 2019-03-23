@@ -33,7 +33,8 @@ class Concentration extends Component {
             showSaveCourses = <SavedCourses
                 savedCourses={this.state.data}
                 concentrationId={this.state.concentrationId}
-                concentrations={this.props.concentrations} />;
+                concentrations={this.props.concentrations} 
+                getClasses={this.getClasses}/>;
         }
         if (this.state.concentrationId !== 0) {
             courseSubjects = <CourseSubjects concentration={this.state.concentrationId} />

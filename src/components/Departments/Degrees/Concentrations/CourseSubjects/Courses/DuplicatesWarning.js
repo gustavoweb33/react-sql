@@ -6,8 +6,8 @@ const duplicateWaring = ({ duplicates }) => {
         <div>
         <h3>Warning. You have duplicate courses. Please remove any duplications to continue.</h3>
             {
-                duplicates.map((duplicate, index) => {
-                    return <ul key={index}>
+                duplicates.map((duplicate) => {
+                    return <ul key={duplicate}>
                         <li>
                             {duplicate}
                         </li>

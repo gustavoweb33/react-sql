@@ -10,8 +10,12 @@ const deleteCourse = (event) => {
     courseToDelete.courseId = event.target.value;
     let deletion = JSON.stringify(courseToDelete)
     fetch(`http://localhost:4000/delete?deleteCourse=${deletion}`)
-        .then(data => console.log(JSON.stringify(data)))
+        .then(response => {
+            if(response.ok) {console.log('deleted')}
+            else{ alert('delteing. please wait a moment')}
+        })
         .catch(error => console.log(error));
+ 
 }
 
 const deleteAllCourses = () => {
@@ -27,7 +31,7 @@ const deleteAllCourses = () => {
 }
 
 
-const savedCourses = ({ savedCourses, concentrationId, concentrations }) => {
+const savedCourses = ({ savedCourses, concentrationId, concentrations, getClasses }) => {
     const id = Number(concentrationId);
     const title = concentrations.filter(concentration => concentration.concentrationId === id)
         .map(concentration => concentration.concentrationDescription);
@@ -61,7 +65,8 @@ const savedCourses = ({ savedCourses, concentrationId, concentrations }) => {
                                             <div className={style.innerContainer}>
                                                 <p>{course.courseId} ({course.creditHours})</p>
 
-                                                <button className={style.deleteButton} value={course.courseId} onClick={deleteCourse}>x</button>
+                                                <button className={style.deleteButton} value={course.courseId} 
+                                                onClick={(event) => { deleteCourse(event); getClasses();}}>x</button>
                                             </div>
                                         </Table.Cell>
                                     )
