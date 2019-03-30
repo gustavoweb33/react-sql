@@ -1,4 +1,3 @@
-
 .coursesContainer {
     height: 40em;
     overflow: scroll;
@@ -10,3 +9,29 @@
     margin-top: 20px;
 }
 
+@media only screen and (max-width: 1300px) {
+    .coursesContainer {
+        height: 20em;
+        overflow: auto;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .coursesContainer {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .coursesContainer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .coursesContainer {
+        grid-template-columns: 1fr;
+        display: initial;
+    }
+}

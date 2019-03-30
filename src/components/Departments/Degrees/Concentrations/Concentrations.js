@@ -49,7 +49,7 @@ class Concentration extends Component {
                     Show saved courses
                 </Button>
                 <Button
-                    color='teal'
+                    color='black'
                     attached='right'
                     onClick={() => this.setState({ display: false })}>
                     Hide Courses
@@ -75,10 +75,6 @@ class Concentration extends Component {
 
                 {showButtons}
 
-                {  /* <div className={style.grid}>
-                    {showSaveCourses}
-                    {courseSubjects}
-                </div>*/}
                 <div className={style.grid}>
                      {showSaveCourses}
                      {courseSubjects}

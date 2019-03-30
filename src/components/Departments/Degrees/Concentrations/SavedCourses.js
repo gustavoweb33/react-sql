@@ -11,11 +11,11 @@ const deleteCourse = (event) => {
     let deletion = JSON.stringify(courseToDelete)
     fetch(`http://localhost:4000/delete?deleteCourse=${deletion}`)
         .then(response => {
-            if(response.ok) {console.log('deleted')}
-            else{ alert('delteing. please wait a moment')}
+            if (response.ok) { console.log('deleted') }
+            else { alert('deleting. please wait a moment') }
         })
         .catch(error => console.log(error));
- 
+
 }
 
 const deleteAllCourses = () => {
@@ -45,17 +45,25 @@ const savedCourses = ({ savedCourses, concentrationId, concentrations, getClasse
     else {
         return noSavedCourses;
     }
-    
+
     return (
-       
+
         <div >
             <div>
                 <Table basic>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell><h3>{title}</h3></Table.HeaderCell>
+                            <Table.HeaderCell style={{ 'display': 'flex', 'justifyContent': 'space-between' }}>
+                                <h3>{title}</h3>
+                                <Button onClick={getClasses}
+                                    icon='refresh'
+                                    size='mini'
+                                    color='green'
+                                    style={{ 'borderRadius': '25px', 'height': '30px'}} />
+                            </Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
+                   
                     <Table.Body>
                         <Table.Row className={style.container}>
                             {
@@ -65,8 +73,8 @@ const savedCourses = ({ savedCourses, concentrationId, concentrations, getClasse
                                             <div className={style.innerContainer}>
                                                 <p>{course.courseId} ({course.creditHours})</p>
 
-                                                <button className={style.deleteButton} value={course.courseId} 
-                                                onClick={(event) => { deleteCourse(event); getClasses();}}>x</button>
+                                                <button className={style.deleteButton} value={course.courseId}
+                                                    onClick={(event) => { deleteCourse(event); getClasses(); }}>x</button>
                                             </div>
                                         </Table.Cell>
                                     )
@@ -79,7 +87,7 @@ const savedCourses = ({ savedCourses, concentrationId, concentrations, getClasse
                     <Button fluid size='tiny' inverted color='red' disabled={disabled.disabled} onClick={deleteAllCourses}>Delete All</Button>
                 </span>
             </div>
-           
+            <p>Click the refresh button to see the updated saved courses.</p>
         </div>
     )
 }

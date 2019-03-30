@@ -5,7 +5,15 @@ import { Button } from 'semantic-ui-react'
 import DuplicatWaring from './DuplicatesWarning';
 
 class DisplayCourses extends Component {
-
+    // componentDidUpdate() {
+    //     console.log('coponent updated from display courses')
+    // }
+    // componentDidMount() {
+    //     console.log('component did mount from display courses')
+    // }
+    // componentWillReceiveProps() { //not safe
+    //     console.log('component received new props')
+    // }
     state = {
         course: [],
         concentration: this.props.concentration,
@@ -20,24 +28,22 @@ class DisplayCourses extends Component {
                 return;
             }
             return;
-        })
+        });
 
         if (event.target.checked === false) {
             const index = stateCourses.findIndex(course => {
                 return course.courseId === event.target.value;
             });
             stateCourses.splice(index, 1);
-
         }
-
+        //if course is never unchecked it will mean checked === true even after the select changes
         this.props.courses.forEach(course => {
             if (course.courseId === event.target.value && event.target.checked) {
                 stateCourses.push(course);
                 return;
             }
-
         });
-
+        console.log(stateCourses)
         this.setState({ course: stateCourses });
     }
 
@@ -47,6 +53,9 @@ class DisplayCourses extends Component {
             .then(response => response.json())  //if there are duplicates, return a warning about duplicate courses
             .then(data => this.setState({ anyDuplicateCourses: data.duplicateCourses }))
             .catch(error => console.log(error));
+
+
+        console.log(this.state.course)
     }
 
     disabledButtonHadler = (length) => {
@@ -55,6 +64,7 @@ class DisplayCourses extends Component {
         }
         return true;
     }
+
 
     render() {
         let disabled = this.disabledButtonHadler(this.state.course.length)
@@ -78,7 +88,7 @@ class DisplayCourses extends Component {
                     }
 
                 </div>
-                <Button color='green' fluid onClick={this.saveCourses} disabled={disabled}>Save Courses</Button >
+                <Button color='green' fluid onClick={this.saveCourses} disabled={disabled} >Save Courses</Button >
                 {this.state.anyDuplicateCourses.length > 0 ? <DuplicatWaring duplicates={this.state.anyDuplicateCourses} /> : null}
             </Aux>
         )
@@ -86,3 +96,4 @@ class DisplayCourses extends Component {
 }
 
 export default DisplayCourses;
+

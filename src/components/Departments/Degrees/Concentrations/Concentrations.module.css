@@ -1,4 +1,3 @@
-
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -9,10 +8,15 @@
 .courseSubject {
     grid-row-start: 1;
     grid-column-start: 2;
-    border: 1px solid rgba(34,36,38,.15);
+    border: 1px solid rgba(34, 36, 38, .15);
 }
 
 .grid2 {
-display: grid;    
+    display: grid;
+}
 
+@media(max-width: 600px) {
+    .grid {
+       display: initial;
+    }
 }

@@ -17,7 +17,7 @@ const courseSubjects = (props) => {
     let showSubjects;
 
     if (subjects.length === 0) {
-        console.log('...wainting')
+        console.log('...waiting')
         showSubjects = null;
     }
     else {

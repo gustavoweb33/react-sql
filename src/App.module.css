@@ -14,3 +14,12 @@ option {
   background-color: #F7F7F7;
 }
 
+@media only screen and (max-width: 600px) {
+  .background {
+    background-color: pink;
+  }
+
+  select {
+    width: 70%;
+  }
+} 
