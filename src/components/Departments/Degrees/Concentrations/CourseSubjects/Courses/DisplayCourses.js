@@ -55,7 +55,7 @@ class DisplayCourses extends Component {
             .catch(error => console.log(error));
 
 
-        console.log(this.state.course)
+        
     }
 
     disabledButtonHadler = (length) => {
@@ -67,6 +67,7 @@ class DisplayCourses extends Component {
 
 
     render() {
+        console.log(`duplicates: ${this.state.anyDuplicateCourses}`)
         let disabled = this.disabledButtonHadler(this.state.course.length)
         return (
             <Aux>
