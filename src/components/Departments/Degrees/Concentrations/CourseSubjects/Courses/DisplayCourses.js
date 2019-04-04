@@ -43,7 +43,7 @@ class DisplayCourses extends Component {
                 return;
             }
         });
-        console.log(stateCourses)
+        
         this.setState({ course: stateCourses });
     }
 
@@ -51,7 +51,7 @@ class DisplayCourses extends Component {
         let state = JSON.stringify(this.state)
         fetch(`http://localhost:4000/insert?course=${state}`)
             .then(response => response.json())  //if there are duplicates, return a warning about duplicate courses
-            .then(data => this.setState({ anyDuplicateCourses: data.duplicateCourses }))
+            .then(data => this.setState({ course: data.duplicateCourses }))
             .catch(error => console.log(error));
 
 
@@ -67,7 +67,7 @@ class DisplayCourses extends Component {
 
 
     render() {
-        console.log(`duplicates: ${this.state.anyDuplicateCourses}`)
+        console.log(this.state.course)
         let disabled = this.disabledButtonHadler(this.state.course.length)
         return (
             <Aux>
