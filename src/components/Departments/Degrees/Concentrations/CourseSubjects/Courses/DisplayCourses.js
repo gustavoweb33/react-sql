@@ -5,15 +5,7 @@ import { Button } from 'semantic-ui-react'
 import DuplicatWaring from './DuplicatesWarning';
 
 class DisplayCourses extends Component {
-    // componentDidUpdate() {
-    //     console.log('coponent updated from display courses')
-    // }
-    // componentDidMount() {
-    //     console.log('component did mount from display courses')
-    // }
-    // componentWillReceiveProps() { //not safe
-    //     console.log('component received new props')
-    // }
+   
     state = {
         course: [],
         concentration: this.props.concentration,
@@ -76,13 +68,13 @@ class DisplayCourses extends Component {
                         this.props.courses.map(course => {
                             return (
                                 <div key={course.courseId}  >
-                                    <div >
+                                    
                                         <input type='checkbox'
                                             value={course.courseId}
                                             onClick={this.getCheckboxValue} />
 
                                         <label htmlFor={course.courseId}>{course.courseId} ({course.creditHours})</label>
-                                    </div>
+                                    
                                 </div>
                             )
                         })

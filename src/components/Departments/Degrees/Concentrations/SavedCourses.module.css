@@ -11,6 +11,7 @@
     width: 11em;
 }
 
+
 .deleteButton {
     height: 20px;
     border-radius: 25px;
@@ -27,6 +28,7 @@
     width: 100%;
 }
 
+
 @media(max-width: 1100px) {
     .container {
         grid-template-columns: 1fr 1fr 1fr;
@@ -42,5 +44,16 @@
 @media(max-width: 770px) {
     .innerContainer {
         width: auto;
+        align-items: center;
+        height: 35px;
+        background-color: rgb(240, 237, 237);
     }
+ 
+    .innerContainer p {
+        padding: 0;
+        width: 100px;
+        margin-bottom: 0px;
+        font-weight: 700;
+    }
+
 }

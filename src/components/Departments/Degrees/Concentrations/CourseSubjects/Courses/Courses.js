@@ -14,7 +14,6 @@ class CoursesClass extends Component {
                 .then(courses => this.setState({ courses: courses }))
                 .catch(error => console.log(error));
         }
-        // console.log('updated from courses component');   //update displaycourse from here to remove duplicated error
     }
 
     render() {
